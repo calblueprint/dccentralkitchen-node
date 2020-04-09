@@ -1,0 +1,8 @@
+{
+  "name": "dccentralkitchen-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:calblueprint/dccentralkitchen-node.git",
+  "author": "aivantg <aivant.developer@gmail.com>",
+  "license": "MIT"
+}
