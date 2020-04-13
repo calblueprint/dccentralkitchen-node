@@ -4,16 +4,6 @@
 
 [//]: # "Describe what's new in this PR in a few lines. A description and bullet points for specifics will suffice."
 
-## Relevant Links
-
-### Online sources
-
-[//]: # 'Optional - copy links to any tutorial or documentation that was useful to you when working on this PR'
-
-### Related PRs
-
-[//]: # "Optional - related PRs you're waiting on/ PRs that will conflict, etc; if this is a refactor, feel free to add PRs that previously modified this code"
-
 ## How to review
 
 [//]: # 'The order in which to review files and what to expect when testing locally'
@@ -30,6 +20,16 @@
 
 [//]: # "Add screenshots of expected behavior - GIFs if you're feeling fancy!"
 
-CC: @anniero98 @wangannie
+## Relevant Links
+
+### Online sources
+
+[//]: # 'Optional - copy links to any tutorial or documentation that was useful to you when working on this PR'
+
+### Related PRs
+
+[//]: # "Optional - related PRs you're waiting on/ PRs that will conflict, etc; if this is a refactor, feel free to add PRs that previously modified this code"
+
+CC: @anniero98
 
 [//]: # 'This tags in both Annies as a default. Feel free to change, or add on anyone who you should be in on the conversation.'
