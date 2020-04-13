@@ -54,9 +54,14 @@
     "output": "lib/airtable",
     "mode": "auto-headless",
     "schemaMeta": {
-      "Customers": {
+      "Stores": {
         "lookupFields": [
-          "Phone Number"
+          "Store Name"
+        ]
+      },
+      "Products": {
+        "lookupFields": [
+          "Full Name"
         ]
       }
     }
