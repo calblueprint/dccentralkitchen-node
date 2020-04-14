@@ -1,8 +1,4 @@
-import {
-  getAllProducts,
-  getAllStores,
-  updateManyStores,
-} from '../lib/airtable/request';
+import { getAllProducts, getAllStores } from '../lib/airtable/request';
 
 const csv = require('csv-parser');
 const fs = require('fs');
@@ -12,6 +8,8 @@ export const updateStoreProducts = async () => {
   const parsedData = await parseCsv();
   const currentStores = await getAllStores();
   const currentProducts = await getAllProducts();
+  const missingStores = [];
+  const missingProducts = [];
 
   const updatedStores = [];
   // eslint-disable-next-line no-restricted-syntax
@@ -21,28 +19,46 @@ export const updateStoreProducts = async () => {
     const store = currentStores.find(record => record.storeName === name);
     if (!store) {
       console.log('Store not found in Airtable '.concat(name));
+      missingStores.push(name);
       // eslint-disable-next-line no-continue
       continue;
     } else {
       const productIds = currentProducts
         .filter(record => products.includes(record.fullName))
         .map(record => record.id);
+
       updatedStores.push({
         id: store.id,
         fields: { Products: productIds },
       });
+
+      // Check if products or missing or incorrectly formatted
+      const storeMissingProducts = products.filter(
+        fullName =>
+          !currentProducts.find(record => record.fullName === fullName)
+      );
+      storeMissingProducts.forEach(missing => {
+        if (missingProducts.indexOf(missing) === -1)
+          missingProducts.push(missing);
+      });
     }
   }
 
-  const updatePromises = [];
-  console.log(updatedStores.length);
-  const numCalls = Math.ceil(updatedStores.length / 10);
-  for (let i = 0; i < numCalls; i += 1) {
-    const subset = updatedStores.slice(i * 10, (i + 1) * 10);
-    console.log(subset);
-    if (subset.length > 0) updatePromises.push(updateManyStores(subset));
-  }
-  await Promise.all(updatePromises);
+  console.log('Stores Missing in Airtable: ');
+  console.log(missingStores);
+
+  console.log('Products Missing in Airtable: ');
+  console.log(missingProducts);
+
+  // const updatePromises = [];
+  // console.log(updatedStores.length);
+  // const numCalls = Math.ceil(updatedStores.length / 10);
+  // for (let i = 0; i < numCalls; i += 1) {
+  //   const subset = updatedStores.slice(i * 10, (i + 1) * 10);
+  //   console.log(subset);
+  //   if (subset.length > 0) updatePromises.push(updateManyStores(subset));
+  // }
+  // await Promise.all(updatePromises);
 
   return parsedData;
 };
