@@ -1,7 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
-import { updateStoreProducts } from './utils/storeProducts';
+import { synchDevProd, updateStoreProducts } from './utils/storeProducts';
 
 dotenv.config();
 
@@ -23,6 +23,16 @@ app.get('/parse', async (_, res) => {
   try {
     const storeData = await updateStoreProducts();
     res.send({ data: storeData });
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+// GET route to trigger the CSV parsing for store-products mapping update
+app.get('/synch', async (_, res) => {
+  try {
+    const newIds = await synchDevProd();
+    res.send({ newIds });
   } catch (e) {
     console.error(e);
   }
