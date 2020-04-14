@@ -1,6 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
+import { updateStoreProducts } from './utils/storeProducts';
 
 dotenv.config();
 
@@ -15,6 +16,16 @@ app.get('/', (_, res) => {
   res.send(
     "You've reached DC Central Kitchen's Backend Server. Try sending a request to one of the API endpoints!"
   );
+});
+
+// GET route to trigger the CSV parsing for store-products mapping update
+app.get('/parse', async (_, res) => {
+  try {
+    const storeData = await updateStoreProducts();
+    res.send({ data: storeData });
+  } catch (e) {
+    console.error(e);
+  }
 });
 
 // Leaving a few examples of people power's api routes!
