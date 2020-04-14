@@ -2,7 +2,7 @@ import {
   getAllProducts,
   getAllStores,
   updateManyStores,
-} from '../lib/airtable-test/request';
+} from '../lib/airtable/request';
 
 const csv = require('csv-parser');
 const fs = require('fs');
@@ -29,16 +29,17 @@ export const updateStoreProducts = async () => {
         .map(record => record.id);
       updatedStores.push({
         id: store.id,
-        fields: { 'Imported Products': productIds },
+        fields: { Products: productIds },
       });
     }
   }
 
   const updatePromises = [];
-
+  console.log(updatedStores.length);
   const numCalls = Math.ceil(updatedStores.length / 10);
   for (let i = 0; i < numCalls; i += 1) {
     const subset = updatedStores.slice(i * 10, (i + 1) * 10);
+    console.log(subset);
     if (subset.length > 0) updatePromises.push(updateManyStores(subset));
   }
   await Promise.all(updatePromises);
