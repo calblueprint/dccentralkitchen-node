@@ -10,26 +10,68 @@ import {
 import {
   getAllProducts as getAllDevProducts,
   getAllStores as getAllDevStores,
+  updateManyStores as updateManyDevStores,
 } from '../lib/airtable/request';
 
 const csv = require('csv-parser');
 const fs = require('fs');
 
+const formatStores = {
+  'Nams Market': "Nam's Market",
+  'Ken Mart Inc': 'Z-Mart',
+};
+
+const formatProducts = {
+  'Grapes, Red seedless, Fresh Cut': 'Grapes, Red (6oz)',
+  'Grapes, Green seedless, Fresh Cut': 'Grapes, Green (6oz)',
+  'tomato, cherry': 'Tomato, cherry',
+  'Grapes, Mix seedless, Fresh Cut': 'Grapes, Mix (6oz)',
+  'Collard Greens (bunch)': 'Collard Greens, (bunch)',
+  'Garlic, peeled (bag)': 'Garlic, Peeled (bag)',
+
+  'Collard Greens, Bag': 'Collard Greens, (bag)',
+  'Corn, Frozen Vegetables': 'Corn, Frozen',
+  'Lettuce, Butterhead (clamshell)': 'Lettuce, Butterhead',
+  'Spring Mix,Organic': 'Spring Mix, Organic',
+  'Kale (bunch)': 'Kale, (bunch)',
+  'Spinach, Frozen Vegetables': 'Spinach, Frozen',
+  'Peas, Frozen Vegetables': 'Peas, Frozen',
+};
+
 const parseCsv = async () => {
   const storeData = [];
-  const filename = 'storeproducts_2020apr2-12.csv';
+  const filename = '2020mar30-apr17.csv';
   const src = fs.createReadStream(filename);
   const end = new Promise(function process(resolve, _) {
     src
       .pipe(csv({ headers: false, skipLines: 1 }))
       .on('data', row => {
-        const store = { name: null, products: [] };
+        const store = { name: null, products: [], deliveryDate: null };
         // eslint-disable-next-line no-restricted-syntax
         for (const [key, value] of Object.entries(row)) {
+          if (key === '0' && value === 'Grand Total') {
+            // eslint-disable-next-line no-continue
+            continue;
+          }
+
           // Store Name
-          if (key === '0') {
-            store.name = value;
-          } else if (value) store.products.push(value);
+          else if (key === '0') {
+            // Special handling for poorly-formatted:
+            if (value in formatStores) {
+              store.name = formatStores[value];
+            } else store.name = value;
+            // Latest delivery date
+          } else if (key === '1') {
+            store.deliveryDate = value;
+            // All others are products
+          } else if (value) {
+            // Special handling for poorly-formatted:
+            if (value in formatProducts) {
+              store.products.push(formatProducts[value]);
+            } else {
+              store.products.push(value);
+            }
+          }
         }
         storeData.push(store);
       })
@@ -166,8 +208,56 @@ export const synchDevProd = async () => {
   return newIds;
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const updateStoreProducts = async () => {
+export const updateStoreProductsDev = async () => {
+  const parsedData = await parseCsv();
+  const currentStores = await getAllDevStores();
+  const currentProducts = await getAllDevProducts();
+  const missingStores = [];
+  const missingProducts = [];
+
+  const updatedStores = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const storeData of parsedData) {
+    const { name, products } = storeData;
+    const store = currentStores.find(record => record.storeName === name);
+    if (!store) {
+      console.log('Store not found in Airtable '.concat(name));
+      missingStores.push(name);
+      // eslint-disable-next-line no-continue
+      continue;
+    } else {
+      const productIds = currentProducts
+        .filter(record => products.includes(record.fullName))
+        .map(record => record.id);
+
+      updatedStores.push({
+        id: store.id,
+        fields: { productIds },
+      });
+
+      // Check if products or missing or incorrectly formatted
+      const storeMissingProducts = products.filter(
+        fullName =>
+          !currentProducts.find(record => record.fullName === fullName)
+      );
+      storeMissingProducts.forEach(missing => {
+        if (missingProducts.indexOf(missing) === -1)
+          missingProducts.push(missing);
+      });
+    }
+  }
+
+  console.log('Stores Missing in Airtable [DEV]: ');
+  console.log(missingStores);
+
+  console.log('Products Missing in Airtable [DEV]: ');
+  console.log(missingProducts);
+  await updateManyDevStores(updatedStores);
+
+  return updatedStores;
+};
+
+export const updateStoreProductsProd = async () => {
   const parsedData = await parseCsv();
   const currentStores = await getAllProdStores();
   const currentProducts = await getAllProdProducts();
@@ -206,10 +296,10 @@ export const updateStoreProducts = async () => {
     }
   }
 
-  console.log('Stores Missing in Airtable: ');
+  console.log('Stores Missing in Airtable [PROD]: ');
   console.log(missingStores);
 
-  console.log('Products Missing in Airtable: ');
+  console.log('Products Missing in Airtable [PROD]: ');
   console.log(missingProducts);
   await updateManyProdStores(updatedStores);
 

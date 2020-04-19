@@ -1,7 +1,11 @@
 import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
-import { synchDevProd, updateStoreProducts } from './utils/storeProducts';
+import {
+  synchDevProd,
+  updateStoreProductsDev,
+  updateStoreProductsProd,
+} from './utils/storeProducts';
 
 dotenv.config();
 
@@ -18,10 +22,20 @@ app.get('/', (_, res) => {
   );
 });
 
-// GET route to trigger the CSV parsing for store-products mapping update
-app.get('/parse', async (_, res) => {
+// GET route to trigger the CSV parsing for store-products mapping update (PROD)
+app.get('/updateStoreProductsProd', async (_, res) => {
   try {
-    const storeData = await updateStoreProducts();
+    const storeData = await updateStoreProductsProd();
+    res.send({ data: storeData });
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+// GET route to trigger the CSV parsing for store-products mapping update (DEV)
+app.get('/updateStoreProductsDev', async (_, res) => {
+  try {
+    const storeData = await updateStoreProductsDev();
     res.send({ data: storeData });
   } catch (e) {
     console.error(e);
