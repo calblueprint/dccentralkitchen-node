@@ -2,10 +2,10 @@ import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
 import {
-  synchDevProd,
   updateStoreProductsDev,
   updateStoreProductsProd,
 } from './utils/storeProducts';
+import { synchDevProd } from './utils/synchDevProd';
 
 dotenv.config();
 
@@ -25,8 +25,11 @@ app.get('/', (_, res) => {
 // GET route to trigger the CSV parsing for store-products mapping update (PROD)
 app.get('/updateStoreProductsProd', async (_, res) => {
   try {
-    const storeData = await updateStoreProductsProd();
-    res.send({ data: storeData });
+    const {
+      updatedStoreNames,
+      noDeliveryStoreNames,
+    } = await updateStoreProductsProd();
+    res.send({ updatedStoreNames, noDeliveryStoreNames });
   } catch (e) {
     console.error(e);
   }
@@ -35,8 +38,11 @@ app.get('/updateStoreProductsProd', async (_, res) => {
 // GET route to trigger the CSV parsing for store-products mapping update (DEV)
 app.get('/updateStoreProductsDev', async (_, res) => {
   try {
-    const storeData = await updateStoreProductsDev();
-    res.send({ data: storeData });
+    const {
+      updatedStoreNames,
+      noDeliveryStoreNames,
+    } = await updateStoreProductsDev();
+    res.send({ updatedStoreNames, noDeliveryStoreNames });
   } catch (e) {
     console.error(e);
   }
@@ -45,8 +51,20 @@ app.get('/updateStoreProductsDev', async (_, res) => {
 // GET route to trigger the CSV parsing for store-products mapping update
 app.get('/synch', async (_, res) => {
   try {
-    const newIds = await synchDevProd();
-    res.send({ newIds });
+    const {
+      newIds,
+      updatedProductNames,
+      updatedProductIds,
+      updatedStoreNames,
+      updatedStoreIds,
+    } = await synchDevProd();
+    res.send({
+      newIds,
+      updatedProductNames,
+      updatedProductIds,
+      updatedStoreNames,
+      updatedStoreIds,
+    });
   } catch (e) {
     console.error(e);
   }
