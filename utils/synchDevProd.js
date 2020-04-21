@@ -129,8 +129,9 @@ const updateAllDevProdInfo = async () => {
     });
 
   // Useful logging
-  console.log('Updated products in [PROD]: ', updatedProductNames);
-  console.log('Updated stores in [PROD]: ', updatedStoreNames);
+  // Everything gets updated right now, so not really useful LOL
+  //   console.log('Updated products in [PROD]: ', updatedProductNames);
+  //   console.log('Updated stores in [PROD]: ', updatedStoreNames);
   const updatedProductIds = await updateManyProdProducts(products);
   const updatedStoreIds = await updateManyProdStores(stores);
   return {
