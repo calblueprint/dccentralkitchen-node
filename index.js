@@ -50,18 +50,15 @@ app.get('/auth', async (_, res) => {
         access_type: 'offline',
         scope: SCOPES,
       });
-      const msg = `Authorize this app by visiting this url: \n\n ${authUrl}`;
-      res.send({ success, error: 'not-authorized', message: msg });
+      res.send(`<h1>Authorization required</h1>
+      <p><a href='${authUrl}'>Authorize this app</a></p>`);
     } else {
       // Otherwise, load test data
       oAuth2Client.setCredentials(JSON.parse(token));
       success = true;
       const result = await listTestData(oAuth2Client);
-      res.send({
-        success,
-        error: '',
-        message: `Already authorized. Result of loading test data: ${result}`,
-      });
+      res.send(`<h2>Already authorized!</h2>
+      <p>Result of loading test data: ${result}</p>`);
     }
   });
   await listTestData(oAuth2Client);
@@ -71,17 +68,12 @@ app.get('/auth-callback', async (req, res) => {
   const { code } = req.query;
   let success = false;
   try {
-    // Check if we have previously stored a token.
     const { tokens } = await oAuth2Client.getToken(code);
-
     oAuth2Client.setCredentials(tokens);
     success = true;
     const result = await listTestData(oAuth2Client);
-    res.send({
-      success,
-      error: '',
-      message: `Already authorized. Result of loading test data: ${result}`,
-    });
+    res.send(`<h1>Successfully authorized!</h1>
+      <p>Result of loading test data: <br> ${result}</p>`);
     // Store the token to disk for later program executions
     fs.writeFile(TOKEN_PATH, JSON.stringify(tokens), (e) => {
       if (e) console.error(e);

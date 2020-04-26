@@ -17,10 +17,10 @@ export async function listTestData(auth) {
 
     const rows = data.values;
     if (rows.length) {
-      result = result.concat('\nStore Name, First Product:\n');
+      result = result.concat('<br>Store Name, First Product:<br>');
       // Print columns A and C, which correspond to indices 0 and 2.
       rows.forEach((row) => {
-        result = result.concat(`\n${row[0]}, ${row[2]}`);
+        result = result.concat(`<br>${row[0]}, ${row[2]}`);
       });
     } else {
       result = result.concat('No data found.');
