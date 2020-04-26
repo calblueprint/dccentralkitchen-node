@@ -3,7 +3,7 @@ import dotenv from 'dotenv-safe';
 import express from 'express';
 import fs from 'fs';
 import { google } from 'googleapis';
-import { listTestData } from './utils/googleSheets';
+import { getCurrentStoreProducts, listTestData } from './utils/googleSheets';
 import {
   updateStoreProductsDev,
   updateStoreProductsProd,
@@ -40,8 +40,8 @@ app.get('/', (_, res) => {
   );
 });
 
+// --- Google Authorization
 app.get('/auth', async (_, res) => {
-  let success = false;
   // Check if we have previously written a token to disk.
   fs.readFile(TOKEN_PATH, async (err, token) => {
     // Ask user to authorize
@@ -53,11 +53,11 @@ app.get('/auth', async (_, res) => {
       res.send(`<h1>Authorization required</h1>
       <p><a href='${authUrl}'>Authorize this app</a></p>`);
     } else {
-      // Otherwise, load test data
+      // Otherwise, set token and load test data
       oAuth2Client.setCredentials(JSON.parse(token));
-      success = true;
       const result = await listTestData(oAuth2Client);
-      res.send(`<h2>Already authorized!</h2>
+      res.send(`<h1>Authorized!</h1>
+      <h2>App is ready to use. Try making some API calls to the endpoints via browser or Postman.</h2>
       <p>Result of loading test data: ${result}</p>`);
     }
   });
@@ -88,13 +88,22 @@ app.get('/auth-callback', async (req, res) => {
   }
   // res.redirect('/');
 });
+
+// --- Update Store-Products Mapping
+
+// GET route to sanity-check parsing using Google sheets
+app.get('/getMappings/current', async (_, res) => {
+  const storeData = await getCurrentStoreProducts(oAuth2Client);
+  res.send(storeData);
+});
+
 // GET route to trigger the CSV parsing for store-products mapping update (PROD)
-app.get('/updateStoreProductsProd', async (_, res) => {
+app.get('/updateMappings/prod', async (_, res) => {
   try {
     const {
       updatedStoreNames,
       noDeliveryStoreNames,
-    } = await updateStoreProductsProd();
+    } = await updateStoreProductsProd(oAuth2Client);
     res.send({ updatedStoreNames, noDeliveryStoreNames });
   } catch (e) {
     console.error(e);
@@ -102,19 +111,21 @@ app.get('/updateStoreProductsProd', async (_, res) => {
 });
 
 // GET route to trigger the CSV parsing for store-products mapping update (DEV)
-app.get('/updateStoreProductsDev', async (_, res) => {
+app.get('/updateMappings/dev', async (_, res) => {
   try {
     const {
       updatedStoreNames,
       noDeliveryStoreNames,
-    } = await updateStoreProductsDev();
+    } = await updateStoreProductsDev(oAuth2Client);
     res.send({ updatedStoreNames, noDeliveryStoreNames });
   } catch (e) {
     console.error(e);
   }
 });
 
-// GET route to trigger the CSV parsing for store-products mapping update
+// --- Port data from [DEV] base to [PROD] base
+
+// GET route to trigger a synchronization of store & product details from the [DEV] base to the [PROD] base
 app.get('/synch', async (_, res) => {
   try {
     const {
@@ -133,45 +144,6 @@ app.get('/synch', async (_, res) => {
     });
   } catch (e) {
     console.error(e);
-  }
-});
-
-// Leaving a few examples of people power's api routes!
-app.post('/invite', async (req, res) => {
-  // I excessively log on backend apps because it's much more relevant
-  console.log('Received Invite Request with body:');
-  console.log(req.body);
-
-  // const confirmSend =  await sendInviteEmail(req.body.pledgeInviteId);
-  const confirmSend = 'dummy';
-
-  if (confirmSend === '') {
-    res.send({
-      status: `An error occured when sending an invitation.`,
-    });
-  }
-
-  res.send({
-    status: `Successfully sent an invitation to ${confirmSend}`,
-  });
-});
-
-app.get('/approve', async (req, res) => {
-  console.log('Received Approve Request with query:');
-  console.log(req.query);
-
-  const billId = req.query.id;
-  try {
-    // await approveSubscriberBill(billId);
-    res.send('Subscriber Bill Approved!');
-  } catch (e) {
-    console.log(e);
-    console.log('Request Approval Failed.');
-    res
-      .status(400)
-      .send(
-        'Request Approval Failed, likely due to malformed request or nonexistent subscriber ID.'
-      );
   }
 });
 
