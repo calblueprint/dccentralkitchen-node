@@ -2,7 +2,8 @@ import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
 import fs from 'fs';
-import { authorize, listMajors } from './utils/googleAuth';
+import { google } from 'googleapis';
+import { listTestData } from './utils/googleSheets';
 import {
   updateStoreProductsDev,
   updateStoreProductsProd,
@@ -11,11 +12,26 @@ import { synchDevProd } from './utils/synchDevProd';
 
 dotenv.config();
 
+// --- Server
 const app = express();
 const port = process.env.PORT || 3000;
-
 app.use(cors()); // Allow Cross-Origin Requests
 app.use(express.json()); // Format post body using JSON
+
+// --- Google
+const oAuth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
+
+// If modifying these scopes, delete token.json.
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
+
+// The file token.json stores the user's access and refresh tokens, and is
+// created automatically when the authorization flow completes for the first
+// time.
+const TOKEN_PATH = 'token.json';
 
 // GET route as a sanity check when deploying
 app.get('/', (_, res) => {
@@ -24,13 +40,62 @@ app.get('/', (_, res) => {
   );
 });
 
-// Load client secrets from a local file.
-fs.readFile('credentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+app.get('/auth', async (_, res) => {
+  let success = false;
+  // Check if we have previously written a token to disk.
+  fs.readFile(TOKEN_PATH, async (err, token) => {
+    // Ask user to authorize
+    if (err) {
+      const authUrl = oAuth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: SCOPES,
+      });
+      const msg = `Authorize this app by visiting this url: \n\n ${authUrl}`;
+      res.send({ success, error: 'not-authorized', message: msg });
+    } else {
+      // Otherwise, load test data
+      oAuth2Client.setCredentials(JSON.parse(token));
+      success = true;
+      const result = await listTestData(oAuth2Client);
+      res.send({
+        success,
+        error: '',
+        message: `Already authorized. Result of loading test data: ${result}`,
+      });
+    }
+  });
+  await listTestData(oAuth2Client);
 });
 
+app.get('/auth-callback', async (req, res) => {
+  const { code } = req.query;
+  let success = false;
+  try {
+    // Check if we have previously stored a token.
+    const { tokens } = await oAuth2Client.getToken(code);
+
+    oAuth2Client.setCredentials(tokens);
+    success = true;
+    const result = await listTestData(oAuth2Client);
+    res.send({
+      success,
+      error: '',
+      message: `Already authorized. Result of loading test data: ${result}`,
+    });
+    // Store the token to disk for later program executions
+    fs.writeFile(TOKEN_PATH, JSON.stringify(tokens), (e) => {
+      if (e) console.error(e);
+      else console.log('Token stored to', TOKEN_PATH);
+    });
+  } catch (err) {
+    res.send({
+      success,
+      error: 'Google API error',
+      message: `Error while trying to retrieve access token: ${err}`,
+    });
+  }
+  // res.redirect('/');
+});
 // GET route to trigger the CSV parsing for store-products mapping update (PROD)
 app.get('/updateStoreProductsProd', async (_, res) => {
   try {
