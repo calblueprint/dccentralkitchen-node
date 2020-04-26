@@ -18,6 +18,7 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "express": "^4.17.1",
     "fs-extra": "^9.0.0",
+    "googleapis": "39",
     "node-fetch": "^2.6.0"
   },
   "scripts": {

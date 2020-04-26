@@ -1,6 +1,8 @@
 import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
+import fs from 'fs';
+import { authorize, listMajors } from './utils/googleAuth';
 import {
   updateStoreProductsDev,
   updateStoreProductsProd,
@@ -20,6 +22,13 @@ app.get('/', (_, res) => {
   res.send(
     "You've reached DC Central Kitchen's Backend Server. Try sending a request to one of the API endpoints!"
   );
+});
+
+// Load client secrets from a local file.
+fs.readFile('credentials.json', (err, content) => {
+  if (err) return console.log('Error loading client secret file:', err);
+  // Authorize a client with credentials, then call the Google Sheets API.
+  authorize(JSON.parse(content), listMajors);
 });
 
 // GET route to trigger the CSV parsing for store-products mapping update (PROD)
