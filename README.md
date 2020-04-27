@@ -10,4 +10,9 @@ To change the application name: https://console.cloud.google.com/apis/credential
 
 ## Working with Dates
 
-https://flaviocopes.com/javascript-dates/
+The easiest thing to do is use moment.js. Don't waste time (^:
+
+## Heroku
+
+`dotenv` throwing errors: https://github.com/motdotla/dotenv/issues/126
+https://devcenter.heroku.com/articles/deploying-nodejs
