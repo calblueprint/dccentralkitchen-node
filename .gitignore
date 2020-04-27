@@ -6,4 +6,5 @@ yarn-error.log
 
 ## Google Sheets
 credentials.json
-token.json
+access_token.json
+refresh_token.json
