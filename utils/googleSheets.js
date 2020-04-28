@@ -133,7 +133,9 @@ export async function getCurrentStoreProducts(auth) {
         }
       });
       // One store per row
-      storeData.push(store);
+      if (store.name.length !== 0) {
+        storeData.push(store);
+      }
     });
   } catch (err) {
     console.error(`The API returned an error: ${err}`);
