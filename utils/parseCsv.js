@@ -1,4 +1,8 @@
 // Original implementation (manually download a CSV and run the server, triggering endpoint to parse and update Airtable)
+
+/*
+ * UNUSED. See googleSheets.js for the newest implementation
+ */
 const csv = require('csv-parser');
 const fs = require('fs');
 

@@ -41,6 +41,7 @@ export function saveTokens(oAuth2Client, tokens) {
  */
 export async function listTestData(auth) {
   let result = '';
+  let success = false;
   try {
     const sheets = google.sheets({ version: 'v4', auth });
     const { data } = await sheets.spreadsheets.values.get({
@@ -58,10 +59,11 @@ export async function listTestData(auth) {
     } else {
       result = result.concat('No data found.');
     }
+    success = true;
   } catch (err) {
     result = result.concat(`The API returned an error: ${err}`);
   }
-  return result;
+  return { result, success };
 }
 
 // These two objects hold mappings to correct discrepancies between what's in our Airtable as Store / Product 'Name' properties.

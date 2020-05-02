@@ -6,8 +6,6 @@ import { google } from 'googleapis';
 import {
   getCurrentStoreProducts,
   listTestData,
-  saveTokens,
-  TOKEN_PATH,
   updateDateRange,
 } from './utils/googleSheets';
 import { updateStoreProducts } from './utils/storeProducts';
@@ -32,7 +30,8 @@ const oAuth2Client = new google.auth.OAuth2(
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 
 oAuth2Client.on('tokens', (tokens) => {
-  saveTokens(oAuth2Client, tokens);
+  const combined = { ...tokens, refresh_token: process.env.REFRESH_TOKEN };
+  oAuth2Client.setCredentials(combined);
 });
 
 // GET route as a sanity check when deploying
@@ -43,7 +42,28 @@ app.get('/', (_, res) => {
 });
 
 // --- Google Authorization
+
+// Uses cached tokens
+/**
+ * Relies on `refresh_token` being stored in `process.env`.
+ * 5.1.2020 using anniero@berkeley.edu's tokens for access. If these permissions ever get revoked, we will have to update this!
+ * If it doesn't exist, you MUST go to `auth-initial`!
+ */
 app.get('/auth', async (_, res) => {
+  oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+  const { result, success } = await listTestData(oAuth2Client);
+  if (success) {
+    res.send(`<h1>Authorized!</h1>
+    <h2>App is ready to use. Try making some API calls to the endpoints via browser or Postman.</h2>
+    <p>Result of loading test data: ${result}</p>`);
+  } else {
+    res.send(`<h1>Not authorized</h1>
+    <p>Please go to /auth-initial to authorize this app. Next, save your 'refresh_token' value and set it as the env variable REFRESH_TOKEN.</p>`);
+  }
+});
+
+// This route must be used to collect refresh_token. Note that the app must be re-deployed after env configs are updated.
+app.get('/auth-initial', async (_, res) => {
   // Check if we have previously written a token to disk.
   fs.readFile('access_'.concat(TOKEN_PATH), async (err, token) => {
     // Ask user to authorize
@@ -75,6 +95,8 @@ app.get('/auth-callback', async (req, res) => {
     success = true;
     const result = await listTestData(oAuth2Client);
     res.send(`<h1>Successfully authorized!</h1>
+      <h2>Copy the refresh token to your clipboard to update the env config: ${tokens.refresh_token}</h2>
+      <p>Note that the refresh token is only returned on the first response when permissions are given. To revoke permissions, please remove access at https://myaccount.google.com/permissions. Then try again.</p>
       <p>Result of loading test data: <br> ${result}</p>`);
   } catch (err) {
     res.send({
@@ -122,8 +144,15 @@ app.post('/updateMappings/prod', async (req, res) => {
     const {
       updatedStoreNames,
       noDeliveryStoreNames,
+      missingProducts,
+      missingStores,
     } = await updateStoreProducts(oAuth2Client, 'PROD');
-    res.send({ updatedStoreNames, noDeliveryStoreNames });
+    res.send({
+      updatedStoreNames,
+      noDeliveryStoreNames,
+      missingProducts,
+      missingStores,
+    });
   } catch (e) {
     console.error(e);
   }
@@ -143,8 +172,15 @@ app.post('/updateMappings/dev', async (req, res) => {
     const {
       updatedStoreNames,
       noDeliveryStoreNames,
+      missingProducts,
+      missingStores,
     } = await updateStoreProducts(oAuth2Client, 'DEV');
-    res.send({ updatedStoreNames, noDeliveryStoreNames });
+    res.send({
+      updatedStoreNames,
+      noDeliveryStoreNames,
+      missingProducts,
+      missingStores,
+    });
   } catch (e) {
     console.error(e);
   }

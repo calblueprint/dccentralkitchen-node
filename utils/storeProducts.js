@@ -100,7 +100,7 @@ export const updateStoreProducts = async (oAuth2Client, base = 'DEV') => {
   console.log(`\nStores Missing in Airtable [${base}]: ${missingStores}`);
 
   missingProducts.sort();
-  console.log(`\nProducts Missing in Airtable [${base}]: ${missingStores}`);
+  console.log(`\nProducts Missing in Airtable [${base}]: ${missingProducts}`);
 
   // Update Airtable base
   if (base === 'DEV') {
@@ -111,5 +111,10 @@ export const updateStoreProducts = async (oAuth2Client, base = 'DEV') => {
     await updateManyProdStores(updatedStores);
   }
 
-  return { updatedStoreNames, noDeliveryStoreNames };
+  return {
+    updatedStoreNames,
+    noDeliveryStoreNames,
+    missingStores,
+    missingProducts,
+  };
 };
