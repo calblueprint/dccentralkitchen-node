@@ -14,12 +14,6 @@
 
 ## Tests Performed, Edge Cases
 
-[//]: # 'Hopefully we will add a testing suite/CI soon, but until then note down the steps you took to test locally'
-
-### Screenshots
-
-[//]: # "Add screenshots of expected behavior - GIFs if you're feeling fancy!"
-
 ## Relevant Links
 
 ### Online sources
@@ -32,4 +26,4 @@
 
 CC: @anniero98
 
-[//]: # 'This tags in both Annies as a default. Feel free to change, or add on anyone who you should be in on the conversation.'
+[//]: # 'This tags in Annie Ro as a default. Feel free to change, or add on anyone who you should be in on the conversation.'

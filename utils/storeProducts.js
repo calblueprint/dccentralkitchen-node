@@ -93,14 +93,14 @@ export const updateStoreProducts = async (oAuth2Client, base = 'DEV') => {
 
   // Useful logging
   console.log('\n\n');
-  console.log('\nStores with deliveries this cycle: ', updatedStoreNames);
-  console.log('\nStores with no deliveries this cycle: ', noDeliveryStoreNames);
+  console.log('\nStores with deliveries this cycle:', updatedStoreNames);
+  console.log('\nStores with no deliveries this cycle:', noDeliveryStoreNames);
 
   missingStores.sort();
-  console.log(`\nStores Missing in Airtable [${base}]: ${missingStores}`);
+  console.log(`\nStores Missing in Airtable [${base}]:`, missingStores);
 
   missingProducts.sort();
-  console.log(`\nProducts Missing in Airtable [${base}]: ${missingProducts}`);
+  console.log(`\nProducts Missing in Airtable [${base}]:`, missingProducts);
 
   // Update Airtable base
   if (base === 'DEV') {

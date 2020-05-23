@@ -11,11 +11,12 @@ import {
   getAllProducts as getAllDevProducts,
   getAllStores as getAllDevStores,
 } from '../lib/airtable/request';
-// Helper to port data from DEV to PROD
+
+// Returns the product fields we're able to update between bases
 const getProductFields = (record) => {
   // Primary Keys, ID, and foreign keys do not persist across bases
   // Neither do computed values
-  // Easier to whitelist for Products table
+  // --> easier to whitelist for Products table
   const product = {
     category: record.category,
     name: record.name,
@@ -25,10 +26,11 @@ const getProductFields = (record) => {
   return product;
 };
 
-// Helper to port data from DEV to PROD
+// Returns the store fields we're able to update between bases
 const getStoreFields = (record) => {
   // Primary Keys, ID, and foreign keys do not persist across bases
   // Neither do computed values
+  // --> easier to blacklist for Stores table
   const {
     primaryKey,
     id,
@@ -129,7 +131,6 @@ const updateAllDevProdInfo = async () => {
     });
 
   // Useful logging
-  // Everything gets updated right now, so not really useful LOL
   //   console.log('Updated products in [PROD]: ', updatedProductNames);
   //   console.log('Updated stores in [PROD]: ', updatedStoreNames);
   const updatedProductIds = await updateManyProdProducts(products);

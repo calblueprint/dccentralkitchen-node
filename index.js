@@ -13,13 +13,13 @@ import { synchDevProd } from './utils/synchDevProd';
 
 dotenv.config();
 
-// --- Server
+/* --- Server --- */
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(cors()); // Allow Cross-Origin Requests
 app.use(express.json()); // Format post body using JSON
 
-// --- Google
+/* --- Google OAuth Client --- */
 const oAuth2Client = new google.auth.OAuth2(
   process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
@@ -37,17 +37,17 @@ oAuth2Client.on('tokens', (tokens) => {
 // GET route as a sanity check when deploying
 app.get('/', (_, res) => {
   res.send(
-    "You've reached DC Central Kitchen's Backend Server. Try sending a request to one of the API endpoints!"
+    "You've reached Healthy Corners Rewards's Backend Server. Try sending a request to one of the API endpoints!"
   );
 });
 
-// --- Google Authorization
+/* --- Google Authorization --- */
 
 // Uses cached tokens
 /**
  * Relies on `refresh_token` being stored in `process.env`.
  * 5.1.2020 using anniero@berkeley.edu's tokens for access. If these permissions ever get revoked, we will have to update this!
- * If it doesn't exist, you MUST go to `auth-initial`!
+ * If `refresh_token` doesn't exist, you MUST go to `auth-initial`!
  */
 app.get('/auth', async (_, res) => {
   oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
@@ -107,7 +107,7 @@ app.get('/auth-callback', async (req, res) => {
   }
 });
 
-// --- Update Store-Products Mapping
+/* --- Update Store-Products Mapping --- */
 
 // GET route to sanity-check parsing using Google sheets
 app.get('/getMappings/current', async (_, res) => {
@@ -186,7 +186,10 @@ app.post('/updateMappings/dev', async (req, res) => {
   }
 });
 
-// --- Port data from [DEV] base to [PROD] base
+/* Port data from [DEV] base to [PROD] base */
+
+// Useful if you want to update data in the DEV base first, then update all of PROD at once
+// Will likely remain unused post-handoff
 
 // GET route to trigger a synchronization of store & product details from the [DEV] base to the [PROD] base
 app.post('/synch', async (req, res) => {
@@ -219,5 +222,5 @@ app.post('/synch', async (req, res) => {
 });
 
 app.listen(port, () =>
-  console.log(`DC Central Backend listening on port ${port}!`)
+  console.log(`Healthy Corners Rewards - Backend listening on port ${port}!`)
 );
