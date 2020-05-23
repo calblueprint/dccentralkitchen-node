@@ -11,7 +11,7 @@ import {
 import { updateStoreProducts } from './utils/storeProducts';
 import { synchDevProd } from './utils/synchDevProd';
 
-dotenv.config();
+dotenv.config({ allowEmptyValues: true });
 
 /* --- Server --- */
 const app = express();
