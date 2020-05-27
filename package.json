@@ -58,6 +58,7 @@
   "airtable-schema-generator": {
     "output": "lib/airtable",
     "mode": "auto-headless",
+    "overwrite": "false",
     "schemaMeta": {
       "Stores": {
         "lookupFields": [

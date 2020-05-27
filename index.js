@@ -1,7 +1,6 @@
 import cors from 'cors';
 import dotenv from 'dotenv-safe';
 import express from 'express';
-import fs from 'fs';
 import { google } from 'googleapis';
 import {
   getCurrentStoreProducts,
@@ -64,26 +63,13 @@ app.get('/auth', async (_, res) => {
 
 // This route must be used to collect refresh_token. Note that the app must be re-deployed after env configs are updated.
 app.get('/auth-initial', async (_, res) => {
-  // Check if we have previously written a token to disk.
-  fs.readFile('access_'.concat(TOKEN_PATH), async (err, token) => {
-    // Ask user to authorize
-    if (err) {
-      const authUrl = oAuth2Client.generateAuthUrl({
-        access_type: 'offline', // Required to get a refresh token
-        scope: SCOPES,
-      });
-      res.send(`<h1>Authorization required</h1>
-      <p><a href='${authUrl}'>Authorize this app</a></p>`);
-    } else {
-      // Otherwise, set token and load test data
-      oAuth2Client.setCredentials(JSON.parse(token));
-      const result = await listTestData(oAuth2Client);
-      res.send(`<h1>Authorized!</h1>
-      <h2>App is ready to use. Try making some API calls to the endpoints via browser or Postman.</h2>
-      <p>Result of loading test data: ${result}</p>`);
-    }
+  // Ask user to authorize
+  const authUrl = oAuth2Client.generateAuthUrl({
+    access_type: 'offline', // Required to get a refresh token
+    scope: SCOPES,
   });
-  await listTestData(oAuth2Client);
+  res.send(`<h1>Authorization required</h1>
+      <p><a href='${authUrl}'>Authorize this app</a></p>`);
 });
 
 app.get('/auth-callback', async (req, res) => {
@@ -93,7 +79,7 @@ app.get('/auth-callback', async (req, res) => {
     const { tokens } = await oAuth2Client.getToken(code);
     oAuth2Client.setCredentials(tokens);
     success = true;
-    const result = await listTestData(oAuth2Client);
+    const { result } = await listTestData(oAuth2Client);
     res.send(`<h1>Successfully authorized!</h1>
       <h2>Copy the refresh token to your clipboard to update the env config: ${tokens.refresh_token}</h2>
       <p>Note that the refresh token is only returned on the first response when permissions are given. To revoke permissions, please remove access at https://myaccount.google.com/permissions. Then try again.</p>

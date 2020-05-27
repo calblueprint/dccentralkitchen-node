@@ -1,37 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-import fs from 'fs';
 import { google } from 'googleapis';
 import moment from 'moment';
-
-// The file token.json stores the user's access and refresh tokens, and is
-// created automatically when the authorization flow completes for the first
-// time.
-export const TOKEN_PATH = 'token.json';
-
-export function saveTokens(oAuth2Client, tokens) {
-  if (tokens.refresh_token) {
-    const refreshPath = 'refresh_'.concat(TOKEN_PATH);
-    // Store the token to disk for later program executions
-    fs.writeFile(
-      refreshPath,
-      JSON.stringify({ refresh_token: tokens.refresh_token }),
-      (e) => {
-        if (e) console.error(e);
-        else console.log('Refresh token stored to', refreshPath);
-      }
-    );
-  }
-  const accessPath = 'access_'.concat(TOKEN_PATH);
-  fs.writeFile(
-    accessPath,
-    JSON.stringify({ access_token: tokens.access_token }),
-    (e) => {
-      if (e) console.error(e);
-      else console.log('Access stored to', accessPath);
-    }
-  );
-  oAuth2Client.setCredentials(tokens);
-}
 
 /**
  * Used for authorization sanity-check
