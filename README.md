@@ -9,5 +9,5 @@ All documentation lives at <https://healthycorners-rewards.netlify.app> - for ne
 
 ## Companion projects
 
-Customer-facing mobile application: [`dccentralkitchen`](https://github.com/calblueprint/dccentralkitchen)
-Clerk-facing tablet application: [`dccentralkitchen-clerks`](https://github.com/calblueprint/dccentralkitchen-clerks)
+- Customer-facing mobile application: [`dccentralkitchen`](https://github.com/calblueprint/dccentralkitchen)
+- Clerk-facing tablet application: [`dccentralkitchen-clerks`](https://github.com/calblueprint/dccentralkitchen-clerks)
