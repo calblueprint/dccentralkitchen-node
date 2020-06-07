@@ -2,7 +2,7 @@
 
 ## Healthy Corners Rewards - Backend Server
 
-All documentation lives at <https://healthycorners-rewards.netlify.app> - for new contributors, we recommend starting with the [project overview](https://healthycorners-rewards.netlify.app/overview).
+All documentation lives at <https://healthycorners-rewards.netlify.app> - for new contributors, we recommend starting with the [project overview](https://healthycorners-rewards.netlify.app/shared/overview.html).
 
 - The documentation for this repo can be found here: <https://healthycorners-rewards.netlify.app/node/>.
 - The traditional README lives at the "Getting Started" page: <https://healthycorners-rewards.netlify.app/node/getting-started.html>
