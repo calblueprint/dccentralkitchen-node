@@ -6,7 +6,8 @@
   "author": "anniero98 <anniero@berkeley.edu>",
   "license": "MIT",
   "scripts": {
-    "generate-schema": "generate-airtable-schema && pretty-quick",
+    "add-require-to-airtable": "(echo \"require('dotenv-safe').config();\" && cat lib/airtable/airtable.js) > temp.js && mv temp.js lib/airtable/airtable.js",
+    "generate-schema": "generate-airtable-schema && pretty-quick && yarn run add-require-to-airtable",
     "start": "babel-node index.js"
   },
   "dependencies": {
@@ -62,12 +63,14 @@
     "schemaMeta": {
       "Stores": {
         "lookupFields": [
-          "Store Name"
+          "Store Name",
+          "SNAP or EBT Accepted"
         ]
       },
       "Products": {
         "lookupFields": [
-          "Full Name"
+          "Full Name",
+          "Points"
         ]
       }
     }

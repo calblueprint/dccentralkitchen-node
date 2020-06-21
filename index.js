@@ -3,6 +3,11 @@ import dotenv from 'dotenv-safe';
 import express from 'express';
 import { google } from 'googleapis';
 import {
+  getProductsByPoints,
+  getStoresBySnapOrEbtAccepted,
+  getStoresByStoreName,
+} from './lib/airtable/request';
+import {
   getCurrentStoreProducts,
   listTestData,
   updateDateRange,
@@ -205,6 +210,24 @@ app.post('/synch', async (req, res) => {
   } catch (e) {
     console.error(e);
   }
+});
+
+// GET route used when testing various airtable-schema-generator functionalities
+app.get('/schema-generator/test', async (_, res) => {
+  const stores2 = await getStoresBySnapOrEbtAccepted(
+    'TRUE()',
+    '{Coupon Program Partner} = TRUE()',
+    [{ field: 'Store Name', direction: 'desc' }]
+  );
+
+  const stores3 = await getStoresByStoreName(
+    "'A & S Grocery'",
+    '{Coupon Program Partner} = TRUE()'
+  );
+
+  const products = await getProductsByPoints(325);
+
+  res.send(` ${stores2[0]}, ${stores3}, ${products}`);
 });
 
 app.listen(port, () =>
