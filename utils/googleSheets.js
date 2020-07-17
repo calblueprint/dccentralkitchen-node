@@ -38,7 +38,7 @@ export async function listTestData(auth) {
 
 const formatStores = {
   'Nams Market': "Nam's Market",
-  'Ken Mart Inc': 'Z-Mart',
+  'Ken Mart Inc': 'Ken Mart',
 };
 
 const formatProducts = {
@@ -56,6 +56,15 @@ const formatProducts = {
   'Kale (bunch)': 'Kale, (bunch)',
   'Spinach, Frozen Vegetables': 'Spinach, Frozen',
   'Peas, Frozen Vegetables': 'Peas, Frozen',
+
+  'Cucumber, Persian lb': 'Cucumber, Persian',
+  'Apple, Golden Delicious (local)': 'Apple, Golden Delicious',
+  'Clementines, bag': 'Clementines, (bag)',
+  'Watermelon (whole)': 'Watermelon, (whole)',
+  'Spring Mix, Bowery Farm BOGO': 'Spring Mix, Bowery Farm',
+  'Baby Kale, Bowery Farm BOGO': 'Kale, Bowery Farm',
+  'Romaine Lettuce, Bowery Farm BOGO': 'Lettuce, Romaine Bowery Farm',
+  'Butter head lettuce, Bowery Farm': 'Lettuce, Butterhead Bowery Farm',
 };
 
 /**
