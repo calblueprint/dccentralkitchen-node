@@ -43,7 +43,7 @@ export const updateStoreProducts = async (oAuth2Client, base = 'DEV') => {
   const updatedStoreNames = [];
   // eslint-disable-next-line no-restricted-syntax
   for (const storeData of parsedData) {
-    const { name, products } = storeData;
+    const { name, products, deliveryDate } = storeData;
     const store = currentStores.find((record) => record.storeName === name);
     if (!store) {
       console.log('Store not found in Airtable '.concat(name));
@@ -57,7 +57,7 @@ export const updateStoreProducts = async (oAuth2Client, base = 'DEV') => {
 
       updatedStores.push({
         id: store.id,
-        fields: { productIds },
+        fields: { productIds, latestDelivery: deliveryDate },
       });
 
       // The CSV only contains stores that were delivered to recently
