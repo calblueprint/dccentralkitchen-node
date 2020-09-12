@@ -24,7 +24,7 @@
     "fs-extra": "^9.0.0",
     "googleapis": "39",
     "moment": "^2.24.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": "14.2.0"
