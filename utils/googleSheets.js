@@ -58,6 +58,7 @@ const formatProducts = {
   'Peas, Frozen Vegetables': 'Peas, Frozen',
   'Trail Mix, Healthy Corners': 'Trail Mix, Healthy Corners (Local)',
   Ginger: 'Ginger, Bag',
+  'Pumpkin (Local)': 'Pumpkin, (Local)',
 
   'Cucumber, Persian lb': 'Cucumber, Persian',
   'Apple, Golden Delicious (local)': 'Apple, Golden Delicious',
