@@ -41,16 +41,13 @@ const formatProducts = {
 };
 
 /**
- * Parse the 'Blueprint - Store Products' sheet of 'FY20 Sales Data and Trends'
- * @see https://docs.google.com/spreadsheets/d/1r-_OB7IsU_CxTNprUXUtgLVON7f-3BSxBXVRLhvB71U/edit#gid=1205390067
- * @see parseCsv.js for the original implementation
- * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
+ * Get products from the Appian API
  */
 export default async function getProducts() {
   const storeData = [];
   try {
     const response = await fetch(
-      'https://dcck-dev.appiancloud.com/suite/webapi/recent-order-data',
+      'https://dcck.appiancloud.com/suite/webapi/recent-order-data',
       {
         method: 'GET',
         headers: {
