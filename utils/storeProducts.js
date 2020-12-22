@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import moment from 'moment';
 import {
   getAllProducts as getAllProdProducts,
   getAllStores as getAllProdStores,
@@ -72,7 +73,12 @@ export const updateStoreProducts = async (base = 'DEV') => {
   }
   // Track names for logging purposes
   const noDeliveryStoreNames = [];
-  // Find which stores in the [DEV] base have not had deliveries
+
+  // Temporarily track start/end range to keep old products for Appian transition
+  const startDate = moment().subtract(9, 'days');
+  const endDate = moment();
+
+  // Find which stores in the base have not had deliveries
   const noDeliveryStores = currentStores
     .filter(
       (currentStore) =>
@@ -80,6 +86,22 @@ export const updateStoreProducts = async (base = 'DEV') => {
     )
     .map((noDeliveryStore) => {
       noDeliveryStoreNames.push(noDeliveryStore.storeName);
+      // Temporarily (only until 12/28) keep products that have delivery dates within last 9 days for cutover
+      if (
+        moment(noDeliveryStore.latestDelivery).isBetween(startDate, endDate)
+      ) {
+        console.log(
+          'Keeping products for ',
+          noDeliveryStore.storeName,
+          ' since ',
+          noDeliveryStore.latestDelivery,
+          ' is with last 9 days'
+        );
+        return {
+          id: noDeliveryStore.id,
+          fields: {},
+        };
+      }
       return {
         id: noDeliveryStore.id,
         fields: { productIds: [] },

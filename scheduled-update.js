@@ -7,7 +7,7 @@ import { updateStoreProducts } from './utils/storeProducts';
 dotenv.config();
 
 // Can't use top-level await yet, so .then.catch it
-updateStoreProducts()
+updateStoreProducts('PROD')
   .then((result) => {
     console.log({
       updateDate: moment().format(),
