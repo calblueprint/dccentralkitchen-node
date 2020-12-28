@@ -11,6 +11,7 @@ const formatStores = {
 const formatProducts = {
   'Grapes, Red seedless, Fresh Cut': 'Grapes, Red (6 oz)',
   'Grapes, Green seedless, Fresh Cut': 'Grapes, Green (6 oz)',
+  'Grapes, Purple seedless, Fresh Cut': 'Grapes, Purple (6 oz)',
   'tomato, cherry': 'Tomato, Cherry (6 oz)',
   'Cherry Tomato': 'Tomato, Cherry (6 oz)',
   'Grapes, Mix seedless, Fresh Cut': 'Grapes, Mix (6 oz)',
@@ -19,6 +20,7 @@ const formatProducts = {
   'Clementines (bag)': 'Clementines, (bag)',
   'Collard Greens, Bag': 'Collard Greens, (bag)',
   'Corn, Frozen Vegetables': 'Corn, Frozen',
+  'Corn, Frozen Vegetables (Local)': 'Corn, Frozen (Local)',
   'Butterhead Lettuce': 'Lettuce, Butterhead',
   'Lettuce, Butterhead (clamshell)': 'Lettuce, Butterhead',
   'Spring Mix,Organic': 'Spring Mix, Organic',
