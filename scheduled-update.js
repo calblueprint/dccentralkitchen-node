@@ -23,7 +23,7 @@ oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 // Can't use top-level await yet, so .then.catch it
 updateStoreProducts(oAuth2Client, 'PROD')
-  .then((result) => {
+  .then(() => {
     console.log({
       updateDate: moment().format(),
       message: 'Succesfully updated Store Products',

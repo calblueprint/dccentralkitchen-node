@@ -1,5 +1,11 @@
 import dotenv from 'dotenv-safe';
 
+/**
+ * Configure Twilio Client using TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_NUMBER from .env
+ * @see https://www.twilio.com/docs/sms/tutorials/marketing-notifications-node-express
+ * @see https://github.com/TwilioDevEd/server-notifications-node
+ */
+
 const cfg = {};
 
 if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
