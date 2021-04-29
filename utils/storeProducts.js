@@ -86,7 +86,7 @@ export const updateStoreProducts = async (base = 'DEV') => {
     )
     .map((noDeliveryStore) => {
       noDeliveryStoreNames.push(noDeliveryStore.storeName);
-      // Temporarily (only until 12/28) keep products that have delivery dates within last 9 days for cutover
+      // Temporarily (only until transition is complete) keep products that have delivery dates within last 9 days for cutover
       if (
         moment(noDeliveryStore.latestDelivery).isBetween(startDate, endDate)
       ) {
@@ -95,7 +95,7 @@ export const updateStoreProducts = async (base = 'DEV') => {
           noDeliveryStore.storeName,
           ' since ',
           noDeliveryStore.latestDelivery,
-          ' is with last 9 days'
+          ' is within last 9 days'
         );
         return {
           id: noDeliveryStore.id,
@@ -109,7 +109,7 @@ export const updateStoreProducts = async (base = 'DEV') => {
     });
 
   // Useful logging
-  console.log('\n\n');
+  console.log('\n');
   console.log('\nStores with deliveries this cycle:', updatedStoreNames);
   console.log('\nStores with no deliveries this cycle:', noDeliveryStoreNames);
 

@@ -28,7 +28,8 @@ app.post('/updateMappings/prod', async (req, res) => {
   // Secure this route
   const secretKey = req.body.key;
   if (secretKey !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -48,6 +49,7 @@ app.post('/updateMappings/prod', async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    res.status(500).send(`${e}`);
   }
 });
 
@@ -56,7 +58,8 @@ app.post('/updateMappings/dev', async (req, res) => {
   // Secure this route
   const secretKey = req.body.key;
   if (secretKey !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -76,6 +79,7 @@ app.post('/updateMappings/dev', async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    res.status(500).send(`${e}`);
   }
 });
 
@@ -89,7 +93,8 @@ app.post('/synch', async (req, res) => {
   // Secure this route
   const secretKey = req.body.key;
   if (secretKey !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -111,6 +116,7 @@ app.post('/synch', async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    res.status(500).send(`${e}`);
   }
 });
 
@@ -121,7 +127,8 @@ app.post('/send_alert', async (req, res) => {
   const secretKey = req.body.key;
 
   if (secretKey !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -130,8 +137,7 @@ app.post('/send_alert', async (req, res) => {
     res.send(`Success! Delivery alerts were sent to ${customers} customer(s).`);
   } catch (err) {
     console.error(err);
-    res.send(`<h1>Error</h1>
-    <p>${err}</p>`);
+    res.status(500).send(`${err}`);
   }
 });
 
@@ -140,7 +146,8 @@ app.post('/send_alert/dev', async (req, res) => {
   const secretKey = req.body.key;
 
   if (secretKey !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -149,8 +156,7 @@ app.post('/send_alert/dev', async (req, res) => {
     res.send(`Success! Delivery alerts were sent to ${customers} customer(s).`);
   } catch (err) {
     console.error(err);
-    res.send(`<h1>Error</h1>
-    <p>${err}</p>`);
+    res.status(500).send(`${err}`);
   }
 });
 
@@ -159,7 +165,8 @@ app.post('/send_sms', async (req, res) => {
   const { to, message, key } = req.body;
 
   if (key !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -168,8 +175,7 @@ app.post('/send_sms', async (req, res) => {
     res.send(`Success! Your message '${message}' was sent to ${to}`);
   } catch (err) {
     console.error(err);
-    res.send(`<h1>Error</h1>
-    <p>${err}</p>`);
+    res.status(500).send(`${err}`);
   }
 });
 
@@ -178,7 +184,8 @@ app.post('/send_sms_batch', async (req, res) => {
   const { to, message, key } = req.body;
 
   if (key !== process.env.HC_SECRET) {
-    res.send(`<h1>Error: usage of this API requires a secret key</h1>
+    res.status(401)
+      .send(`<h1>Error: usage of this API requires a secret key</h1>
     <p>Please notify someone to help you get access.</p>`);
     return;
   }
@@ -187,8 +194,7 @@ app.post('/send_sms_batch', async (req, res) => {
     res.send(`Success! '${message}' was sent to ${to.join(', ')}`);
   } catch (err) {
     console.error(err);
-    res.send(`<h1>Error</h1>
-    <p>${err}</p>`);
+    res.status(500).send(`${err}`);
   }
 });
 

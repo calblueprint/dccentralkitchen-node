@@ -31,7 +31,6 @@ const formatProducts = {
   'Peas, Frozen Vegetables': 'Peas, Frozen',
   'Frozen Peas': 'Peas, Frozen',
   'Frozen Corn': 'Corn, Frozen',
-
   'Cucumber, Persian lb': 'Cucumber, Persian',
   'Apple, Golden Delicious (local)': 'Apple, Golden Delicious',
   'Clementines, bag': 'Clementines, (bag)',
@@ -43,39 +42,41 @@ const formatProducts = {
 };
 
 /**
- * Get products from the Appian API
+ * Get products from the Appian API.
+ * Development URL: https://dcck-dev.appiancloud.com/suite/webapi/recent-order-data
+ * Staging URL: https://dcck-staging.appiancloud.com/suite/webapi/recent-order-data
+ * Production URL: https://dcck.appiancloud.com/suite/webapi/recent-order-data
+ * Note: API keys differ for each URL.
  */
 export default async function getProducts() {
   const storeData = [];
-  try {
-    const response = await fetch(
-      'https://dcck.appiancloud.com/suite/webapi/recent-order-data',
-      {
-        method: 'GET',
-        headers: {
-          'Appian-Api-Key': process.env.APPIAN_API_KEY,
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    const { data } = await response.json();
-    data.forEach((record) => {
-      const store = { storeName: null, products: [], lastDeliveryDate: null };
-      if (record.storeName in formatStores) {
-        store.storeName = formatStores[record.storeName];
-      } else store.storeName = record.storeName;
-      store.lastDeliveryDate = record.lastDeliveryDate;
-      record.products.forEach((product) => {
-        if (product in formatProducts) {
-          store.products.push(formatProducts[product]);
-        } else store.products.push(product);
-      });
-      storeData.push(store);
-    });
-  } catch (err) {
-    console.log(err);
-    return null;
+  const response = await fetch(
+    'https://dcck.appiancloud.com/suite/webapi/recent-order-data',
+    {
+      method: 'GET',
+      headers: {
+        'Appian-Api-Key': process.env.APPIAN_API_KEY,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error(`Appian API response status: ${response.status}`);
   }
+  const { data } = await response.json();
+  data.forEach((record) => {
+    const store = { storeName: null, products: [], lastDeliveryDate: null };
+    if (record.storeName in formatStores) {
+      store.storeName = formatStores[record.storeName];
+    } else store.storeName = record.storeName;
+    store.lastDeliveryDate = record.lastDeliveryDate;
+    record.products.forEach((product) => {
+      if (product in formatProducts) {
+        store.products.push(formatProducts[product]);
+      } else store.products.push(product);
+    });
+    storeData.push(store);
+  });
   return storeData;
 }
