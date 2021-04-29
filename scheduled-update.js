@@ -8,7 +8,7 @@ dotenv.config();
 
 // Can't use top-level await yet, so .then.catch it
 updateStoreProducts('PROD')
-  .then((result) => {
+  .then(() => {
     console.log({
       updateDate: moment().format(),
       message: 'Succesfully updated Store Products through Appian API',

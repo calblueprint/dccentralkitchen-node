@@ -8,6 +8,17 @@ import {
   getStoresByIds as getDevStoresByIds,
 } from '../lib/airtable/request';
 
+/**
+ * Cleans up the customer record from Airtable by filtering only favorite stores:
+ * - with latestDelivery date matching the current date
+ * - with productIds (at least one product available)
+ * - not marked as doNotDisplay
+ *
+ * Returns the customer record with:
+ * - valid store names (array)
+ * - name (string)
+ * - phone number (string)
+ */
 async function getFavoriteStoreNames(cust, base) {
   let customer = null;
   try {
@@ -47,6 +58,11 @@ async function getFavoriteStoreNames(cust, base) {
   return customer;
 }
 
+/**
+ * Retrieves and returns all customer records from Airtable where the customer
+ * has at least 1 'favorite store' and SMS Delivery Notifications enabled.
+ * Uses the getFavoriteStoreNames helper to clean up customer records.
+ */
 export default async function getCustomers(base) {
   let customers = [];
   try {
@@ -60,8 +76,7 @@ export default async function getCustomers(base) {
     } else {
       console.log(
         "Error: please check the inputted value for the 'base' parameter",
-        base,
-        ' thatsit'
+        base
       );
     }
     customers = Promise.all(
