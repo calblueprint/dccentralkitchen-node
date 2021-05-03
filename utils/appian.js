@@ -9,12 +9,12 @@ const formatStores = {
 };
 
 const formatProducts = {
-  'Grapes, Red seedless, Fresh Cut': 'Grapes, Red (6 oz)',
-  'Grapes, Green seedless, Fresh Cut': 'Grapes, Green (6 oz)',
-  'Grapes, Purple seedless, Fresh Cut': 'Grapes, Purple (6 oz)',
+  'Grapes, Red Seedless, Fresh Cut': 'Grapes, Red (6 oz)',
+  'Grapes, Green Seedless, Fresh Cut': 'Grapes, Green (6 oz)',
+  'Grapes, Purple Seedless, Fresh Cut': 'Grapes, Purple (6 oz)',
   'tomato, cherry': 'Tomato, Cherry (6 oz)',
   'Cherry Tomato': 'Tomato, Cherry (6 oz)',
-  'Grapes, Mix seedless, Fresh Cut': 'Grapes, Mix (6 oz)',
+  'Grapes, Mix Seedless, Fresh Cut': 'Grapes, Mix (6 oz)',
   'Collard Greens (bunch)': 'Collard Greens, (bunch)',
   'Garlic, peeled (bag)': 'Garlic, Peeled (bag)',
   'Clementines (bag)': 'Clementines, (bag)',
@@ -39,6 +39,7 @@ const formatProducts = {
   'Baby Kale, Bowery Farm BOGO': 'Kale, Bowery Farm',
   'Romaine Lettuce, Bowery Farm BOGO': 'Lettuce, Romaine Bowery Farm',
   'Butter head lettuce, Bowery Farm': 'Lettuce, Butterhead Bowery Farm',
+  'Onion, Yellow, J': 'Onion, Yellow, Jumbo',
 };
 
 /**
