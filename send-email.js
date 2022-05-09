@@ -34,11 +34,14 @@ const sendEmail = async () => {
 				<h2>Attached is the missing stores and products</h2>
 				<h3>Missing Products:</h3>
 				<ul>
-					${JSON.parse(products).map((product) => `<li>${product}</li>`)}
+					${JSON.parse(products).reduce(
+            (acc, product) => `${acc}<li>${product}</li>`,
+            ''
+          )}
 				</ul>  
 				<h3>Missing Stores:</h3>
 				<ul>
-					${JSON.parse(stores).map((store) => `<li>${store}</li>`)}
+					${JSON.parse(stores).reduce((acc, store) => `${acc}<li>${store}</li>`, '')}
 				</ul>  
 			</html>
 			`,
