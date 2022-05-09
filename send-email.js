@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import dotenv from 'dotenv-safe';
-// import missingProducts from './missingProducts.json'
+import { getAllRecords } from './lib/airtable/airtable';
+import { Tables } from './lib/airtable/schema';
 
 dotenv.config();
 
@@ -16,12 +17,16 @@ const sendEmail = async (emailList) => {
     },
   });
 
+  const emailsss = await getAllRecords(Tables.Emails)
+    .then((resp) => resp)
+    .catch((e) => console.log(JSON.stringify(e)));
+
   const products = fs.readFileSync('./missingProducts.json', 'utf8');
   const stores = fs.readFileSync('./missingStores.json', 'utf8');
 
   const mailOptions = {
     from: 'walter.k.jenkins@gmail.com',
-    to: emailList,
+    to: emailsss.map((item) => item.email),
     subject: '[DC Kitchen Updates] - Missing Stores and Products',
     html: `
 			<!doctype html>
