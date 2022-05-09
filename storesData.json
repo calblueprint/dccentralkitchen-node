@@ -1,0 +1,583 @@
+[
+  {
+    "storeName": "A-1 Grocery",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Broccoli Crowns",
+      "Clementines, Bag",
+      "Corn, Frozen (Local)",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Pepper, Green",
+      "Pepper, Red"
+    ]
+  },
+  {
+    "storeName": "BP Blair Gas Station",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Banana",
+      "Blueberries",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Orange, Large",
+      "Pineapple, Fresh Cut",
+      "Strawberries, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "Brookland Supermarket and Deli",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Orange, Large",
+      "Pepper, Green",
+      "Pepper, Red",
+      "Pepper, Yellow",
+      "Potato, Baking Idaho",
+      "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Chesapeake Big Market",
+    "lastDeliveryDate": "5/4/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Granny Smith (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Cucumber, Seedless",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lime",
+      "Mango, Whole",
+      "Onion, Red",
+      "Onion"
+    ]
+  },
+  {
+    "storeName": "Circle 7 (Circle Seven)",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Avocado, Hass",
+      "Banana",
+      "Cabbage, Green (Local)",
+      "Carrots, Baby, Bag",
+      "Cucumber, Seedless",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Kale, Bunch (Local)",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large",
+      "Pepper, Red",
+      "Pineapple, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "Circle 7 Express",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Whole",
+      "Orange, Large",
+      "Pineapple, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "Dan Akil Convenience Store",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "DC Food Market",
+    "lastDeliveryDate": "5/3/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Onion, Red",
+      "Orange, Large",
+      "Pineapple, Fresh Cut",
+      "Potato, Baking Idaho"
+    ]
+  },
+  {
+    "storeName": "Dollar Plus Food Store (Bladensburg Road)",
+    "lastDeliveryDate": "5/3/2022",
+    "products": [
+      "Banana",
+      "Blueberries",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Onion, Yellow, Jumbo",
+      "Orange, Medium, Sunkist",
+      "Pepper, Green",
+      "Pineapple, Fresh Cut",
+      "Strawberries, Fresh Cut",
+      "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Dollar Plus Food Store (Pennsylvania Avenue)",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Granny Smith (Local)",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Brussels Sprouts, Steamable, Frozen",
+      "Cabbage, Green (Local)",
+      "Carrots, Baby, Bag",
+      "Fruit, Fresh Cut Mixed",
+      "Ginger, Bag",
+      "Grapefruit",
+      "Kiwi, 4 pack",
+      "Lemon",
+      "Ma"
+    ]
+  },
+  {
+    "storeName": "Economy Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Broccoli Crowns",
+      "Cabbage, Green (Local)",
+      "Fruit, Fresh Cut Mixed",
+      "Garlic, Loose",
+      "Ginger, Bag",
+      "Grapefruit",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Kiwi, 4 "
+    ]
+  },
+  {
+    "storeName": "Elmira Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Broccoli Crowns",
+      "Cabbage, Green (Local)",
+      "Carrots, Baby, Bag",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Mango, Whole",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large"
+    ]
+  },
+  {
+    "storeName": "Fort Drum Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Avocado, Hass",
+      "Banana",
+      "Berry Blend, Frozen",
+      "Broccoli Crowns",
+      "Cabbage, Green (Local)",
+      "Collard Greens, Bunch",
+      "Collard Greens, Frozen",
+      "Corn, Frozen (Local)",
+      "Garlic, Loose",
+      "Grapefruit",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lime",
+      "Onion, Red",
+      "On"
+    ]
+  },
+  {
+    "storeName": "G & G Grocery",
+    "lastDeliveryDate": "5/4/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Pepper, Green",
+      "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Grubb's Southeast Pharmacy",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Apple, Golden Delicious",
+      "Apple, Red Delicious (Local)",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Mango, Fresh Cut",
+      "Orange, Large",
+      "Pear, Bartlett",
+      "Pineapple, Fre"
+    ]
+  },
+  {
+    "storeName": "Holiday Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Avocado, Hass",
+      "Banana",
+      "Broccoli Crowns",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Lemon",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large",
+      "Pepper, Green",
+      "Pineapple, Whole"
+    ]
+  },
+  {
+    "storeName": "Ken Mart Inc",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Fresh Cut",
+      "Orange, Large",
+      "Pepper, Green",
+      "Pineapple, Fresh Cut",
+      "Strawberries, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "Kwik Stop",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Granny Smith (Local)",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Ginger, Bag",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Onion, Yellow, Jumbo",
+      "Ora"
+    ]
+  },
+  {
+    "storeName": "Liff's Market",
+    "lastDeliveryDate": "5/4/2022",
+    "products": [
+      "Banana",
+      "Broccoli Cuts, Steamable, Frozen",
+      "Fruit, Fresh Cut Mixed",
+      "Garlic, Loose",
+      "Ginger, Bag",
+      "Lemon",
+      "Lime",
+      "Mango, Whole",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large",
+      "Pepper, Green",
+      "Potato, Baking Idaho",
+      "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Marianne's Cafe",
+    "lastDeliveryDate": "5/9/2022",
+    "products": ["Fruit, Fresh Cut Mixed", "Grapes, Mix Seedless, Fresh Cut"]
+  },
+  {
+    "storeName": "McKinley Market",
+    "lastDeliveryDate": "5/3/2022",
+    "products": ["Banana"]
+  },
+  {
+    "storeName": "Mellon Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Fresh Cut",
+      "Mango, Whole",
+      "Onion, Yellow, Jumbo",
+      "Orange, Medium, Sunkist",
+      "Pepper, Green",
+      "Pin"
+    ]
+  },
+  {
+    "storeName": "Nam's Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lime",
+      "Trail Mix, Healthy Corners (Local)"
+    ]
+  },
+  {
+    "storeName": "Neighborhood Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Fresh Cut",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large",
+      "Pepper, Green",
+      "Pepper, Red",
+      "Pineapple, Fresh Cut",
+      "Potato, Baking Id"
+    ]
+  },
+  {
+    "storeName": "Newton Food Mart",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Red Delicious (Local)",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Onion, Red",
+      "Pepper, Red",
+      "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Service Quick",
+    "lastDeliveryDate": "5/2/2022",
+    "products": [
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Pineapple, Fresh Cut"
+    ]
+  },
+  {
+    "storeName": "Shipley Super Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": []
+  },
+  {
+    "storeName": "Sonya's Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": ["Banana", "Orange, Medium, Sunkist", "Tomato, Slicer"]
+  },
+  {
+    "storeName": "Surprise Grocery",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Banana",
+      "Broccoli Crowns",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Mango, Fresh Cut",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Pepper, Green",
+      "Pepper, Red",
+      "Pineapple, Fresh Cut",
+      "Potato, B"
+    ]
+  },
+  {
+    "storeName": "T & G Grocery",
+    "lastDeliveryDate": "5/3/2022",
+    "products": [
+      "Apple, Red Delicious (Local)",
+      "Banana",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Onion, Yellow, Jumbo"
+    ]
+  },
+  {
+    "storeName": "Texas Avenue Convenience Store",
+    "lastDeliveryDate": "5/4/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Orange, Medium, Sunkist",
+      "Pepper, Red",
+      "Pinea"
+    ]
+  },
+  {
+    "storeName": "The Cupboard",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Granny Smith (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Lemon",
+      "Lime",
+      "Onion, Red",
+      "Onion, Yellow, Jumbo",
+      "Orange, Medium, Sunkist",
+      "Pepper, Green",
+      "Pepper, Red",
+      "Pepper, Stir Fry, Frozen",
+      "Pepper, Yellow",
+      "Pineapple, Fresh C"
+    ]
+  },
+  {
+    "storeName": "The Fresh Food Factory",
+    "lastDeliveryDate": "5/5/2022",
+    "products": [
+      "Carrots, Baby, Bag",
+      "Fruit, Fresh Cut Mixed",
+      "Ginger, Bag",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Fresh Cut",
+      "Pineapple, Fresh Cut",
+      "Spinach, Bag"
+    ]
+  },
+  {
+    "storeName": "Thomas & Sons Food Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Red Delicious (Local)",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Mix Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Mango, Fresh Cut",
+      "Pepper, Green",
+      "Potato, Baking Idaho",
+      "Strawberries, Fresh Cut",
+      "Tomato, Sli"
+    ]
+  },
+  {
+    "storeName": "Uptown Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Apple, Golden Delicious (Local)",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Ginger, Bag",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Green Seedless, Fresh Cut",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Onion, Red",
+      "Onion, Yellow, J"
+    ]
+  },
+  {
+    "storeName": "Wheeler Market",
+    "lastDeliveryDate": "5/9/2022",
+    "products": [
+      "Apple, Golden Delicious",
+      "Apple, Red Delicious (Local)",
+      "Avocado, Hass",
+      "Banana",
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Purple Seedless, Fresh Cut",
+      "Lemon",
+      "Lime",
+      "Onion, Yellow, Jumbo",
+      "Orange, Large",
+      "Pineapple, Fresh Cut",
+      "Pomegranate, Whole",
+      "Strawberries, Fresh Cut",
+      "Tomato, Slice"
+    ]
+  },
+  {
+    "storeName": "Yang Market",
+    "lastDeliveryDate": "5/6/2022",
+    "products": [
+      "Banana",
+      "Broccoli Crowns",
+      "Carrots, Baby, Bag",
+      "Garlic, Loose",
+      "Ginger, Bag",
+      "Grapefruit",
+      "Kiwi, 4 pack",
+      "Orange, Medium, Sunkist",
+      "Pepper, Red",
+      "Pepper, Yellow",
+      "Pineapple, Whole"
+    ]
+  }
+]

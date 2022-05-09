@@ -8,7 +8,8 @@
   "scripts": {
     "generate-schema": "generate-airtable-schema && pretty-quick",
     "start": "babel-node index.js",
-    "update-store-products": "babel-node scheduled-update.js"
+    "update-store-products": "babel-node scheduled-update.js",
+    "send-email": "babel-node send-email.js"
   },
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -26,6 +27,7 @@
     "googleapis": "39",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.1",
+    "nodemailer": "^6.7.5",
     "twilio": "^3.54.1"
   },
   "engines": {

@@ -1,5 +1,8 @@
 import dotenv from 'dotenv-safe';
+import fs from 'fs';
+import { createFile } from 'fs-extra';
 import fetch from 'node-fetch';
+import saveFile from '../lib/saveFile';
 
 // These two objects hold mappings to correct discrepancies between what's in our Airtable as Store / Product 'Name' properties.
 dotenv.config({ allowEmptyValues: true });
@@ -66,6 +69,8 @@ export default async function getProducts() {
     throw new Error(`Appian API response status: ${response.status}`);
   }
   const { data } = await response.json();
+  saveFile('./storesData.json', data);
+  console.log('appian data: ', data);
   data.forEach((record) => {
     const store = { storeName: null, products: [], lastDeliveryDate: null };
     if (record.storeName in formatStores) {
