@@ -24,6 +24,3 @@
 
 [//]: # "Optional - related PRs you're waiting on/ PRs that will conflict, etc; if this is a refactor, feel free to add PRs that previously modified this code"
 
-CC: @anniero98
-
-[//]: # 'This tags in Annie Ro as a default. Feel free to change, or add on anyone who you should be in on the conversation.'
