@@ -1,14 +1,14 @@
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import dotenv from 'dotenv-safe';
-import { getAllRecords } from './lib/airtable/airtable';
-import { Tables } from './lib/airtable/schema';
+import { getAllRecords } from './lib/airtable-prod/airtable';
+import { Tables } from './lib/airtable-prod/schema';
 
 dotenv.config();
 
 const emails = ['wjenkins@blueraster.com'];
 
-const sendEmail = async (emailList) => {
+const sendEmail = async () => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -17,7 +17,7 @@ const sendEmail = async (emailList) => {
     },
   });
 
-  const emailsss = await getAllRecords(Tables.Emails)
+  const emailList = await getAllRecords(Tables.Emails)
     .then((resp) => resp)
     .catch((e) => console.log(JSON.stringify(e)));
 
@@ -25,8 +25,8 @@ const sendEmail = async (emailList) => {
   const stores = fs.readFileSync('./missingStores.json', 'utf8');
 
   const mailOptions = {
-    from: 'walter.k.jenkins@gmail.com',
-    to: emailsss.map((item) => item.email),
+    from: 'DC Kitchen',
+    to: emailList.map((item) => item.email),
     subject: '[DC Kitchen Updates] - Missing Stores and Products',
     html: `
 			<!doctype html>
