@@ -116,11 +116,11 @@ export const updateStoreProducts = async (base = 'DEV') => {
 
   missingStores.sort();
   console.log(`\nStores Missing in Airtable [${base}]:`, missingStores);
-  saveFile('missingStores.json', missingStores);
+  saveFile('./data/missingStores.json', missingStores);
   missingProducts.sort();
   console.log(`\nProducts Missing in Airtable [${base}]:`, missingProducts);
 
-  saveFile('./missingProducts.json', missingProducts);
+  saveFile('./data/missingProducts.json', missingProducts);
 
   // Update Airtable base
   if (base === 'DEV') {

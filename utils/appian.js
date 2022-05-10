@@ -69,7 +69,7 @@ export default async function getProducts() {
     throw new Error(`Appian API response status: ${response.status}`);
   }
   const { data } = await response.json();
-  saveFile('./storesData.json', data);
+  saveFile('./data/storesData.json', data);
   console.log('appian data: ', data);
   data.forEach((record) => {
     const store = { storeName: null, products: [], lastDeliveryDate: null };

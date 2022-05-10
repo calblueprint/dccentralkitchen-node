@@ -6,8 +6,6 @@ import { Tables } from './lib/airtable-prod/schema';
 
 dotenv.config();
 
-const emails = ['wjenkins@blueraster.com'];
-
 const sendEmail = async () => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -21,8 +19,8 @@ const sendEmail = async () => {
     .then((resp) => resp)
     .catch((e) => console.log(JSON.stringify(e)));
 
-  const products = fs.readFileSync('./missingProducts.json', 'utf8');
-  const stores = fs.readFileSync('./missingStores.json', 'utf8');
+  const products = fs.readFileSync('./data/missingProducts.json', 'utf8');
+  const stores = fs.readFileSync('./data/missingStores.json', 'utf8');
 
   const mailOptions = {
     from: 'DC Kitchen',

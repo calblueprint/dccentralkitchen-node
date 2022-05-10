@@ -17,6 +17,11 @@
     ]
   },
   {
+    "storeName": "Bodega Market (Florida Avenue)",
+    "lastDeliveryDate": "5/10/2022",
+    "products": []
+  },
+  {
     "storeName": "BP Blair Gas Station",
     "lastDeliveryDate": "5/5/2022",
     "products": [
@@ -91,7 +96,7 @@
   },
   {
     "storeName": "Circle 7 Express",
-    "lastDeliveryDate": "5/6/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Banana",
       "Fruit, Fresh Cut Mixed",
@@ -115,7 +120,7 @@
   },
   {
     "storeName": "DC Food Market",
-    "lastDeliveryDate": "5/3/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Banana",
       "Fruit, Fresh Cut Mixed",
@@ -144,7 +149,7 @@
   },
   {
     "storeName": "Dollar Plus Food Store (Pennsylvania Avenue)",
-    "lastDeliveryDate": "5/6/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Apple, Golden Delicious (Local)",
       "Apple, Granny Smith (Local)",
@@ -203,7 +208,7 @@
   },
   {
     "storeName": "Fort Drum Market",
-    "lastDeliveryDate": "5/9/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Avocado, Hass",
       "Banana",
@@ -233,6 +238,16 @@
       "Onion, Yellow, Jumbo",
       "Pepper, Green",
       "Tomato, Slicer"
+    ]
+  },
+  {
+    "storeName": "Good Food Markets - RIA",
+    "lastDeliveryDate": "5/10/2022",
+    "products": [
+      "Fruit, Fresh Cut Mixed",
+      "Grapes, Red Seedless, Fresh Cut",
+      "Mango, Fresh Cut",
+      "Pineapple, Fresh Cut"
     ]
   },
   {
@@ -307,7 +322,7 @@
   },
   {
     "storeName": "Liff's Market",
-    "lastDeliveryDate": "5/4/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Banana",
       "Broccoli Cuts, Steamable, Frozen",
@@ -327,7 +342,7 @@
   },
   {
     "storeName": "Marianne's Cafe",
-    "lastDeliveryDate": "5/9/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": ["Fruit, Fresh Cut Mixed", "Grapes, Mix Seedless, Fresh Cut"]
   },
   {
@@ -440,7 +455,7 @@
   },
   {
     "storeName": "T & G Grocery",
-    "lastDeliveryDate": "5/3/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Apple, Red Delicious (Local)",
       "Banana",
@@ -451,7 +466,7 @@
   },
   {
     "storeName": "Texas Avenue Convenience Store",
-    "lastDeliveryDate": "5/4/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Apple, Golden Delicious (Local)",
       "Apple, Red Delicious (Local)",
@@ -565,7 +580,7 @@
   },
   {
     "storeName": "Yang Market",
-    "lastDeliveryDate": "5/6/2022",
+    "lastDeliveryDate": "5/10/2022",
     "products": [
       "Banana",
       "Broccoli Crowns",
