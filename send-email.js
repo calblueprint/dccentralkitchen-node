@@ -55,6 +55,6 @@ const sendEmail = async () => {
 };
 
 // Can't use top-level await yet, so .then.catch it
-sendEmail(emails).catch((e) => {
+sendEmail().catch((e) => {
   console.error(e);
 });
