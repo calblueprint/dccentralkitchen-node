@@ -12,12 +12,12 @@ const formatStores = {
 };
 
 const formatProducts = {
-  'Grapes, Red Seedless, Fresh Cut': 'Grapes, Red (6 oz)',
-  'Grapes, Green Seedless, Fresh Cut': 'Grapes, Green (6 oz)',
-  'Grapes, Purple Seedless, Fresh Cut': 'Grapes, Purple (6 oz)',
+  'Grapes, Red Seedless, Fresh Cut': 'Grapes, Red Seedless, Fresh Cut',
+  'Grapes, Green Seedless, Fresh Cut': 'Grapes, Green Seedless, Fresh Cut',
+  'Grapes, Purple Seedless, Fresh Cut': 'Grapes, Purple Seedless, Fresh Cut',
   'tomato, cherry': 'Tomato, Cherry (6 oz)',
   'Cherry Tomato': 'Tomato, Cherry (6 oz)',
-  'Grapes, Mix Seedless, Fresh Cut': 'Grapes, Mix (6 oz)',
+  'Grapes, Mix Seedless, Fresh Cut': 'Grapes, Mix Seedless, Fresh Cut',
   'Collard Greens (bunch)': 'Collard Greens, (bunch)',
   'Garlic, peeled (bag)': 'Garlic, Peeled (bag)',
   'Clementines (bag)': 'Clementines, (bag)',

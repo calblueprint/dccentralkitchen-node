@@ -32,7 +32,7 @@ export const updateStoreProducts = async (base = 'DEV') => {
       "Error: please check the inputted value for the 'base' parameter"
     );
   }
-
+  saveFile('./data/currentProducts.json', currentProducts);
   const missingStores = [];
   const missingProducts = [];
 
