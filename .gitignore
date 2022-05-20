@@ -7,3 +7,7 @@ yarn-error.log
 credentials.json
 access_token.json
 refresh_token.json
+data/currentProducts.json
+data/missingProducts.json
+data/missingStores.json
+data/storesData.json
