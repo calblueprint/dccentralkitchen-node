@@ -15,7 +15,7 @@ const sendEmail = async () => {
     },
   });
 
-  const emailList = await getAllRecords(Tables.Emails)
+  const emailList = getAllRecords(Tables.Emails)
     .then((resp) => resp)
     .catch((e) => console.log(JSON.stringify(e)));
 
